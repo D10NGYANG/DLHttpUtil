@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.D10NGYANG"
-version = "0.2"
+version = "0.3"
 
 repositories {
     mavenCentral()
@@ -24,11 +24,11 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib"))
                 val kotlin_ktor_ver = "2.0.1"
-                implementation("io.ktor:ktor-client-core:$kotlin_ktor_ver")
-                implementation("io.ktor:ktor-client-cio:$kotlin_ktor_ver")
-                implementation("io.ktor:ktor-client-logging:$kotlin_ktor_ver")
-                implementation("io.ktor:ktor-client-content-negotiation:$kotlin_ktor_ver")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$kotlin_ktor_ver")
+                api("io.ktor:ktor-client-core:$kotlin_ktor_ver")
+                api("io.ktor:ktor-client-cio:$kotlin_ktor_ver")
+                api("io.ktor:ktor-client-logging:$kotlin_ktor_ver")
+                api("io.ktor:ktor-client-content-negotiation:$kotlin_ktor_ver")
+                api("io.ktor:ktor-serialization-kotlinx-json:$kotlin_ktor_ver")
                 val kotlin_serialization_json = "1.3.2"
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization_json")
                 val napier_version = "2.6.1"
