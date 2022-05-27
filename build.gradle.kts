@@ -32,7 +32,7 @@ kotlin {
                 val kotlin_serialization_json = "1.3.2"
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization_json")
                 val napier_version = "2.6.1"
-                implementation("io.github.aakira:napier:$napier_version")
+                api("io.github.aakira:napier:$napier_version")
             }
         }
         val commonTest by getting {
