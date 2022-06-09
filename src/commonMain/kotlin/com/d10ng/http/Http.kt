@@ -58,7 +58,7 @@ object Http {
         }
         client = HttpClient() {
             install(ContentNegotiation) {
-                json(json = this@Http.json, contentType = ContentType.Any)
+                json(json = this@Http.json)
             }
             install(Logging) {
                 logger = object: Logger {
