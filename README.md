@@ -18,6 +18,6 @@ Step 2. Add the dependency
 dependencies {
   implementation 'com.github.D10NGYANG:DLHttpUtil:$version'
   // JSON序列化
-  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3"
 }
 ```
