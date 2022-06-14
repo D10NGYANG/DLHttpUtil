@@ -74,18 +74,30 @@ object Http {
                     when(cause) {
                         is ClientRequestException -> {
                             val exceptionResponse = cause.response
-                            when {
-                                exceptionResponse.status == HttpStatusCode.Unauthorized -> {
+                            when(exceptionResponse.status) {
+                                HttpStatusCode.Unauthorized -> {
                                     val exceptionResponseText = exceptionResponse.bodyAsText()
                                     throw UnauthorizedException(exceptionResponse, exceptionResponseText)
                                 }
-                                exceptionResponse.status == HttpStatusCode.NotFound -> {
+                                HttpStatusCode.NotFound, HttpStatusCode.Forbidden -> {
                                     throw Exception("服务器资源不存在或已禁止访问")
                                 }
-                                exceptionResponse.status.value >= HttpStatusCode.InternalServerError.value -> {
-                                    throw Exception("服务器无响应，请检查网络后再试")
+                                HttpStatusCode.BadRequest, HttpStatusCode.PaymentRequired,
+                                HttpStatusCode.MethodNotAllowed, HttpStatusCode.NotAcceptable,
+                                HttpStatusCode.ProxyAuthenticationRequired -> {
+                                    throw Exception("请求参数错误或非法请求")
+                                }
+                                else -> {
+                                    if (exceptionResponse.status.value >= HttpStatusCode.InternalServerError.value) {
+                                        throw Exception("服务器无响应，请检查网络后再试")
+                                    } else if (exceptionResponse.status.value >= HttpStatusCode.RequestTimeout.value) {
+                                        throw Exception("请求失败，请检查网络后再试")
+                                    }
                                 }
                             }
+                        }
+                        is ServerResponseException -> {
+                            throw Exception("服务器无响应，请检查网络后再试")
                         }
                         is CancellationException -> {
                             // 协程被取消的错误，不用管

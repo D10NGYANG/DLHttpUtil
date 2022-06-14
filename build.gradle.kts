@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.D10NGYANG"
-version = "0.4"
+version = "0.5"
 
 repositories {
     mavenCentral()
@@ -23,13 +23,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
-                val kotlin_ktor_ver = "2.0.1"
+                val kotlin_ktor_ver = "2.0.2"
                 api("io.ktor:ktor-client-core:$kotlin_ktor_ver")
                 api("io.ktor:ktor-client-cio:$kotlin_ktor_ver")
                 api("io.ktor:ktor-client-logging:$kotlin_ktor_ver")
                 api("io.ktor:ktor-client-content-negotiation:$kotlin_ktor_ver")
                 api("io.ktor:ktor-serialization-kotlinx-json:$kotlin_ktor_ver")
-                val kotlin_serialization_json = "1.3.2"
+                val kotlin_serialization_json = "1.3.3"
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization_json")
                 val napier_version = "2.6.1"
                 api("io.github.aakira:napier:$napier_version")
@@ -38,7 +38,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                val kotlin_coroutines_ver = "1.6.1"
+                val kotlin_coroutines_ver = "1.6.2"
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_ver")
             }
         }
