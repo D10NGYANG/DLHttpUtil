@@ -16,8 +16,8 @@ allprojects {
 Step 2. Add the dependency
 ```build.gradle
 dependencies {
-  implementation 'com.github.D10NGYANG:DLHttpUtil:$version'
+  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.0'
   // JSON序列化
-  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3"
+  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
 }
 ```
