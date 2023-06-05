@@ -9,6 +9,7 @@
 allprojects {
   repositories {
     ...
+    // 已弃用
     maven { url 'https://jitpack.io' }
     // 我的github镜像仓库
     maven { url 'https://raw.githubusercontent.com/D10NGYANG/maven-repo/main/repository'}
@@ -19,9 +20,9 @@ allprojects {
 2. Add the dependency
 ```build.gradle
 dependencies {
-  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.0'
+  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.1'
   // JSON序列化
-  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
 }
 ```
 
