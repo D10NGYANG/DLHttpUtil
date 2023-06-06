@@ -2,17 +2,16 @@ val bds100MavenUsername: String by project
 val bds100MavenPassword: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.8.20"
-    kotlin("plugin.serialization") version "1.8.20"
+    kotlin("multiplatform") version "1.8.21"
+    kotlin("plugin.serialization") version "1.8.21"
     id("maven-publish")
 }
 
 group = "com.github.D10NGYANG"
-version = "0.8.1"
+version = "0.8.2"
 
 repositories {
     mavenCentral()
-    maven("https://jitpack.io" )
 }
 
 kotlin {
