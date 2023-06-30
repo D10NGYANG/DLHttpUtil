@@ -4,23 +4,20 @@
 [![](https://jitpack.io/v/D10NGYANG/DLHttpUtil.svg)](https://jitpack.io/#D10NGYANG/DLHttpUtil)
 
 # 使用说明
-1. Add the JitPack repository to your build file
+1. 添加仓库
 ```build.gradle
 allprojects {
   repositories {
     ...
-    // 已弃用
-    maven { url 'https://jitpack.io' }
-    // 我的github镜像仓库
     maven { url 'https://raw.githubusercontent.com/D10NGYANG/maven-repo/main/repository'}
   }
 }
 ```
 
-2. Add the dependency
+2. 添加依赖
 ```build.gradle
 dependencies {
-  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.2'
+  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.3'
   // JSON序列化
   implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
 }
