@@ -17,7 +17,7 @@ allprojects {
 2. 添加依赖
 ```build.gradle
 dependencies {
-  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.3'
+  implementation 'com.github.D10NGYANG:DLHttpUtil:0.8.4'
   // JSON序列化
   implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
 }
