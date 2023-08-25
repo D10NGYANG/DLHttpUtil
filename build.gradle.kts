@@ -2,14 +2,14 @@ val bds100MavenUsername: String by project
 val bds100MavenPassword: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.9.0"
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("multiplatform") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.10"
     id("maven-publish")
     id("com.github.ben-manes.versions") version "0.47.0"
 }
 
 group = "com.github.D10NGYANG"
-version = "0.8.4"
+version = "0.8.5"
 
 repositories {
     mavenCentral()
@@ -31,7 +31,7 @@ kotlin {
                 api("io.ktor:ktor-client-logging:$kotlinKtorVer")
                 api("io.ktor:ktor-client-content-negotiation:$kotlinKtorVer")
                 api("io.ktor:ktor-serialization-kotlinx-json:$kotlinKtorVer")
-                val kotlinSerializationJsonVer = "1.5.1"
+                val kotlinSerializationJsonVer = "1.6.0"
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationJsonVer")
                 val napierVer = "2.6.1"
                 api("io.github.aakira:napier:$napierVer")
