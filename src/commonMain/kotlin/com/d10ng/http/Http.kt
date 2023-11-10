@@ -22,9 +22,6 @@ import kotlinx.serialization.json.Json
 
 object Http {
 
-    /** 域名 */
-    var baseUrl = ""
-
     /** 自定义规则的JSON工具 */
     val json by lazy {
         Json {
@@ -44,16 +41,13 @@ object Http {
 
     /**
      * 初始化
-     * @param baseUrl String 基础域名
      * @param isLogEnable Boolean 是否开启打印
      * @param handleResponseException SuspendFunction2<[@kotlin.ParameterName] Throwable, [@kotlin.ParameterName] HttpRequest, Unit> 错误处理
      */
     fun init(
-        baseUrl: String,
         isLogEnable: Boolean,
         handleResponseException: suspend (cause: Throwable, request: HttpRequest) -> Unit = { _, _ -> }
     ) {
-        this.baseUrl = baseUrl
         if (client != null) {
             client?.close()
         }

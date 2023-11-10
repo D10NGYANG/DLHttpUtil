@@ -23,9 +23,9 @@ class Test {
     @Test
     fun test1() {
         runBlocking {
-            Http.init("https://eim-prod-api.bds100.com", true)
+            Http.init(true)
             val res = Api.handlerResponse {
-                it.get("${Http.baseUrl}/api/app/version/EIM").body()
+                it.get("https://eim-prod-api.bds100.com/api/app/version/EIM").body()
             }
             println(res)
             Http.release()

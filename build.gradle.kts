@@ -2,14 +2,14 @@ val bds100MavenUsername: String by project
 val bds100MavenPassword: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.9.10"
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("multiplatform") version "1.9.20"
+    kotlin("plugin.serialization") version "1.9.20"
     id("maven-publish")
-    id("com.github.ben-manes.versions") version "0.47.0"
+    id("com.github.ben-manes.versions") version "0.49.0"
 }
 
 group = "com.github.D10NGYANG"
-version = "0.8.5"
+version = "0.9.0"
 
 repositories {
     mavenCentral()
@@ -25,7 +25,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
-                val kotlinKtorVer = "2.3.3"
+                val kotlinKtorVer = "2.3.6"
                 api("io.ktor:ktor-client-core:$kotlinKtorVer")
                 api("io.ktor:ktor-client-cio:$kotlinKtorVer")
                 api("io.ktor:ktor-client-logging:$kotlinKtorVer")
