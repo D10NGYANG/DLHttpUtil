@@ -1,5 +1,4 @@
 import com.d10ng.http.Api
-import com.d10ng.http.Http
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -13,9 +12,12 @@ class Test {
     @Test
     fun test() {
         runBlocking {
-            val client = HttpClient(CIO)
-            val response: HttpResponse = client.get("https://ktor.io/")
+            val client = HttpClient(CIO) {
+                expectSuccess = false
+            }
+            val response: HttpResponse = client.get("https://eim-prod-api.bds100.com/api/app/versions/EIM")
             println(response.status)
+            println(response.bodyAsText())
             client.close()
         }
     }
@@ -23,12 +25,10 @@ class Test {
     @Test
     fun test1() {
         runBlocking {
-            Http.init(true)
-            val res = Api.handlerResponse {
+            val res = Api.handleResponse {
                 it.get("https://eim-prod-api.bds100.com/api/app/version/EIM").body()
             }
             println(res)
-            Http.release()
         }
     }
 }

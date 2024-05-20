@@ -2,17 +2,18 @@ val bds100MavenUsername: String by project
 val bds100MavenPassword: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("multiplatform") version "1.9.23"
+    kotlin("plugin.serialization") version "1.9.23"
     id("maven-publish")
     id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 group = "com.github.D10NGYANG"
-version = "0.9.3"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
+    maven("https://raw.githubusercontent.com/D10NGYANG/maven-repo/main/repository")
 }
 
 kotlin {
@@ -22,26 +23,29 @@ kotlin {
     }
 
     sourceSets {
+        val kotlinKtorVer = "2.3.11"
+        val kotlinSerializationJsonVer = "1.6.3"
+        val napierVer = "2.7.1"
+        val kotlinCoroutinesVer = "1.8.1"
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
-                val kotlinKtorVer = "2.3.8"
-                api("io.ktor:ktor-client-core:$kotlinKtorVer")
-                api("io.ktor:ktor-client-cio:$kotlinKtorVer")
-                api("io.ktor:ktor-client-logging:$kotlinKtorVer")
-                api("io.ktor:ktor-client-content-negotiation:$kotlinKtorVer")
-                api("io.ktor:ktor-serialization-kotlinx-json:$kotlinKtorVer")
-                val kotlinSerializationJsonVer = "1.6.3"
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationJsonVer")
-                val napierVer = "2.6.1"
-                api("io.github.aakira:napier:$napierVer")
+                // ktor核心库
+                implementation("io.ktor:ktor-client-core:$kotlinKtorVer")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                val kotlinCoroutinesVer = "1.8.0"
+                implementation("io.ktor:ktor-client-cio:$kotlinKtorVer")
+                implementation("io.ktor:ktor-client-logging:$kotlinKtorVer")
+                implementation("io.ktor:ktor-client-content-negotiation:$kotlinKtorVer")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$kotlinKtorVer")
+                implementation("io.github.aakira:napier:$napierVer")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationJsonVer")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVer")
+                // 通用工具
+                implementation("com.github.D10NGYANG:DLCommonUtil:0.1.2")
             }
         }
     }
