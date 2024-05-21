@@ -1,7 +1,6 @@
 # DLHttpUtil
-网络请求封装库；
 
-[![](https://jitpack.io/v/D10NGYANG/DLHttpUtil.svg)](https://jitpack.io/#D10NGYANG/DLHttpUtil)
+网络请求 Ktor Client 插件，拦截部分错误转换成中文，提供错误信息Flow用于UI统一展示；
 
 # 使用说明
 1. 添加仓库
@@ -17,9 +16,9 @@ allprojects {
 2. 添加依赖
 ```build.gradle
 dependencies {
-  implementation 'com.github.D10NGYANG:DLHttpUtil:0.9.3'
-  // JSON序列化
-  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
+  implementation 'com.github.D10NGYANG:DLHttpUtil:1.0.0'
+  // ktor核心库
+  implementation 'io.ktor:ktor-client-core:2.3.11'
 }
 ```
 
