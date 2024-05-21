@@ -1,4 +1,3 @@
-import com.d10ng.http.Api
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -25,7 +24,7 @@ class Test {
     @Test
     fun test1() {
         runBlocking {
-            val res = Api.handleResponse {
+            val res = TestApi.handleResponse {
                 it.get("https://eim-prod-api.bds100.com/api/app/version/EIM").body()
             }
             println(res)

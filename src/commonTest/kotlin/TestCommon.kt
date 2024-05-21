@@ -1,7 +1,6 @@
 import com.d10ng.common.log.LogIt
 import com.d10ng.http.Api
 import com.d10ng.http.Http
-import com.d10ng.http.setDefaultHttpResponseValidator
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -18,6 +17,21 @@ import org.junit.Test
 
 object LogTest : LogIt("test")
 
+object TestApi : Api(
+    client = HttpClient(CIO) {
+        install(ContentNegotiation) {
+            json(json = com.d10ng.common.transform.json)
+        }
+        install(Logging) {
+            logger = object : Logger {
+                override fun log(message: String) {
+                    LogTest.i(message)
+                }
+            }
+            level = LogLevel.ALL
+        }
+    })
+
 class TestCommon {
 
     @Test
@@ -27,27 +41,12 @@ class TestCommon {
                 LogTest.i("result ${Http.errorResponseMessageFlow.first()}")
             }
             LogTest.debug = true
-            val client = HttpClient(CIO) {
-                install(ContentNegotiation) {
-                    json(json = com.d10ng.common.transform.json)
-                }
-                install(Logging) {
-                    logger = object : Logger {
-                        override fun log(message: String) {
-                            LogTest.i(message)
-                        }
-                    }
-                    level = LogLevel.ALL
-                }
-                setDefaultHttpResponseValidator()
-            }
-            Api.client = client
-            Api.handle<AppLastVersion> {
+            TestApi.handle<AppLastVersion> {
                 it.get("https://eim-prod-api.bds100.com/api/app/version/EIMS").body()
             }?.apply {
                 println(this)
             }
-            client.close()
+            TestApi.client.close()
         }
     }
 }

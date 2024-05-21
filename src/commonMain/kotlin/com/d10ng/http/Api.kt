@@ -5,15 +5,14 @@ import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.statement.*
 
-object Api {
-
-    var client: HttpClient? = null
-
+abstract class Api(
+    var client: HttpClient
+) {
     suspend fun handleResponse(
         block: suspend (HttpClient) -> HttpResponse,
     ): HttpResponse? {
         return try {
-            block(client!!)
+            block(client)
         } catch (e: InterdictionException) {
             Http.postErrorResponse(e.message ?: "")
             null
@@ -28,7 +27,7 @@ object Api {
         block: suspend (HttpClient) -> T,
     ): T? {
         return try {
-            block.invoke(client!!)
+            block.invoke(client)
         } catch (e: InterdictionException) {
             Http.postErrorResponse(e.message ?: "")
             null

@@ -16,7 +16,7 @@ allprojects {
 2. 添加依赖
 ```build.gradle
 dependencies {
-  implementation 'com.github.D10NGYANG:DLHttpUtil:1.0.0'
+  implementation 'com.github.D10NGYANG:DLHttpUtil:1.0.1'
   // ktor核心库
   implementation 'io.ktor:ktor-client-core:2.3.11'
 }
