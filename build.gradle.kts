@@ -2,14 +2,14 @@ val bds100MavenUsername: String by project
 val bds100MavenPassword: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.9.23"
-    kotlin("plugin.serialization") version "1.9.23"
+    kotlin("multiplatform") version "2.0.10"
+    kotlin("plugin.serialization") version "2.0.10"
     id("maven-publish")
     id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 group = "com.github.D10NGYANG"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -17,14 +17,16 @@ repositories {
 }
 
 kotlin {
+    jvmToolchain(8)
     jvm {
-        jvmToolchain(8)
-        withJava()
+        testRuns["test"].executionTask.configure {
+            useJUnit()
+        }
     }
 
     sourceSets {
-        val kotlinKtorVer = "2.3.11"
-        val kotlinSerializationJsonVer = "1.6.3"
+        val kotlinKtorVer = "2.3.12"
+        val kotlinSerializationJsonVer = "1.7.1"
         val kotlinCoroutinesVer = "1.8.1"
         val commonMain by getting {
             dependencies {
@@ -43,7 +45,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationJsonVer")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVer")
                 // 通用工具
-                implementation("com.github.D10NGYANG:DLCommonUtil:0.1.2")
+                implementation("com.github.D10NGYANG:DLCommonUtil:0.2.0")
             }
         }
     }
