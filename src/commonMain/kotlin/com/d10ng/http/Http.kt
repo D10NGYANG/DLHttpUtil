@@ -13,7 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import java.net.UnknownHostException
 
 object Http {
 
@@ -88,10 +87,6 @@ fun HttpClientConfig<*>.setDefaultHttpResponseValidator(
 
                 is ClosedReceiveChannelException -> {
                     throw InterdictionException("服务器无响应，请检查网络后再试")
-                }
-
-                is UnknownHostException -> {
-                    throw InterdictionException("无法访问服务器，请检查网络后再试")
                 }
             }
         }
